@@ -2,74 +2,63 @@ package com.driver;
 
 public class Pizza {
 
+    private boolean isVeg;
 
-    private int price;
-    private Boolean isVeg;
+    private int totalPrice;
+
+    private int extraCheesePrice;
+
+    private int paperBagPrice;
+
+    private int toppingsPrice;
+
     private String bill;
-    private int vegprice=300;
-    private int nonvegprice=400;
-    private int extaracheese=80;
-    private int extratoppingveg=70;
-    private  int extratoppingnonveg=120;
-    private int   paperback=20;
 
-    public Pizza(Boolean isVeg)
-    {
-        this.isVeg = isVeg;
-        // your code goes here
-        if(this.isVeg)
-        {
-            System.out.println("Base Price Of The Pizza: "+vegprice);
-            this.price=vegprice;
+    Pizza(boolean isVeg){
+
+        if(isVeg){
+            totalPrice = 300;
+            this.bill = "Base Price of Veg Pizza :"+300 +"\n";
+        }else{
+            totalPrice = 400;
+            this.bill = "Base Price Of Non Veg Pizza : "+400 +"\n";
+
         }
-        else
-        {
-            System.out.println("Base Price Of The Pizza: "+nonvegprice);
-            this.price=nonvegprice;
+        this.extraCheesePrice = 80;
+        this.paperBagPrice = 20;
+
+        if(isVeg){
+            this.toppingsPrice = 70;
+        }else{
+            this.toppingsPrice = 120;
         }
+
     }
 
-    public int getPrice(){
-        return this.price;
-    }
+    public void addExtraCheese(){
+        totalPrice = totalPrice + extraCheesePrice;
 
-    public void addExtraCheese()
-    {
-        // your code goes here
-        System.out.println("Extra Cheese  Added: "+extaracheese);
-//        if(this.isVeg)
-        this.price+=extaracheese;
-//        else
-//            this.price+=extaracheese;
+        this.bill = this.bill + "Extra cheese added :"+extraCheesePrice+"\n";
     }
 
     public void addExtraToppings(){
-        // your code goes here
-        if(this.isVeg)
-        {
-            System.out.println("Extra Toppings Added: "+extratoppingveg);
-            this.price+=extratoppingveg;
-        }
-        else
-        {
-            System.out.println("Extra Toppings Added: "+extratoppingnonveg);
-
-            this.price+=extratoppingnonveg;
-        }
+        totalPrice = totalPrice + toppingsPrice;
+        this.bill = this.bill + "Extra Toppings added :"+toppingsPrice+"\n";
     }
 
-    public void addTakeaway(){
-        // your code goes here
-        if(this.isVeg)
-        {
-            System.out.println("Paperbag Added: "+paperback);
-            this.price+=paperback;
-        }
+    public void paperBagAdded(){
+        totalPrice = totalPrice + paperBagPrice;
+        this.bill = this.bill + "Paper Bag added :"+paperBagPrice+"\n";
+    }
+
+    public int getTotalPrice(){
+        return totalPrice;
     }
 
     public String getBill(){
-        // your code goes here
-        bill="Total Price: "+this.price;
-        return this.bill;
+        this.bill = this.bill + "Total Bill Price is :"+totalPrice+"\n";
+        return bill;
     }
+
+
 }
